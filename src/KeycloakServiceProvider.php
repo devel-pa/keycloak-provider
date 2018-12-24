@@ -53,7 +53,7 @@ class KeycloakServiceProvider extends ServiceProvider
         Auth::extend('keycloak.guard', function ($app, $name, array $config) {
             $provider = Auth::createUserProvider($config['provider']);
 
-            $sessionGuard = new SessionGuard($name, $provider, $this->app['session.store'], request());
+            return new SessionGuard($name, $provider, $this->app['session.store'], request());
         });
     }
 }
